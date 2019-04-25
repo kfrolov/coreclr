@@ -243,7 +243,7 @@ namespace System.Diagnostics.Tracing
     {
 
 #if FEATURE_EVENTSOURCE_XPLAT
-        private static readonly EventListener persistent_Xplat_Listener = XplatEventLogger.InitializePersistentListener();
+        private static readonly EventListener? persistent_Xplat_Listener = XplatEventLogger.InitializePersistentListener();
 #endif //FEATURE_EVENTSOURCE_XPLAT
 
         /// <summary>
@@ -704,7 +704,7 @@ namespace System.Diagnostics.Tracing
                 if (eventID == 0)
                     continue;
 
-                byte[] metadata = EventPipeMetadataGenerator.Instance.GenerateEventMetadata(m_eventData[i]);
+                byte[]? metadata = EventPipeMetadataGenerator.Instance.GenerateEventMetadata(m_eventData[i]);
                 uint metadataLength = (metadata != null) ? (uint)metadata.Length : 0;
 
                 string eventName = m_eventData[i].Name;
